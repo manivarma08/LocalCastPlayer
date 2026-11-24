@@ -42,7 +42,7 @@ class VideoServer(private val resolver: ContentResolver, port: Int) : NanoHTTPD(
         if (start >= total || start > end) {
             afd.close()
             return newFixedLengthResponse(
-                Response.Status.REQUESTED_RANGE_NOT_SATISFIABLE, MIME_PLAINTEXT, ""
+                Response.Status.RANGE_NOT_SATISFIABLE, MIME_PLAINTEXT, ""
             ).apply { addHeader("Content-Range", "bytes */$total") }
         }
 
